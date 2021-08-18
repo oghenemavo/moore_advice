@@ -16,7 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $show = 'Hello welcome, ';
+    if (auth()->user()) { 
+        $show .= '<a href="admin/logout">logout</a>';
+    } else {
+        $show .= '<a href="admin">admin here</a>';   
+    }
+    echo $show;
 });
 
 
